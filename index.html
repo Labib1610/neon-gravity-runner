@@ -3,11 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neon Gravity Runner</title>
+    <title>Neon Gravity Runner - The Ultimate Gravity-Defying Experience</title>
+    <meta name="description" content="An intense browser-based gravity-switching game with neon aesthetics">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <canvas id="gameCanvas"></canvas>
+    
+    <!-- Main Menu -->
+    <div id="mainMenu" class="menu">
+        <h1>NEON RUNNER</h1>
+        <p class="subtitle">Defy Gravity. Chase Glory.</p>
+        <button class="menu-button" onclick="startGame()">START GAME</button>
+        <button class="menu-button secondary" onclick="showSettings()">SETTINGS</button>
+        <button class="menu-button secondary" onclick="showStats()">STATISTICS</button>
+        <button class="menu-button secondary" onclick="showHelp()">HOW TO PLAY</button>
+    </div>
+
+    <!-- Settings Menu -->
+    <div id="settingsMenu" class="menu hidden">
+        <h1>SETTINGS</h1>
+        <div class="settings-grid">
+            <div class="setting-item">
+                <label>Difficulty</label>
+                <select id="difficultySelect">
+                    <option value="easy">Easy</option>
+                    <option value="normal" selected>Normal</option>
+                    <option value="hard">Hard</option>
+                    <option value="insane">Insane</option>
+                </select>
+            </div>
+            <div class="setting-item">
+                <label>Visual Effects</label>
+                <select id="effectsSelect">
+                    <option value="high" selected>High</option>
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
+                </select>
+            </div>
+            <div class="setting-item">
+                <label>Particle Density</label>
+                <input type="range" id="particleSlider" min="0" max="100" value="75">
+            </div>
+            <div class="setting-item">
+                <label>Screen Shake</label>
+                <select id="shakeSelect">
+                    <option value="on" selected>On</option>
+                    <option value="off">Off</option>
+                </select>
+            </div>
+        </div>
+        <button class="menu-button" onclick="saveSettings()">SAVE & RETURN</button>
+    </div>
+
+    <!-- Stats Menu -->
+    <div id="statsMenu" class="menu hidden">
+        <h1>STATISTICS</h1>
+        <div class="stats-container">
+            <div class="stat-row">
+                <span class="label">High Score:</span>
+                <span class="value" id="highScoreStat">0</span>
+            </div>
+            <div class="stat-row">
+                <span class="label">Total Games Played:</span>
+                <span class="value" id="gamesPlayedStat">0</span>
+            </div>
+            <div class="stat-row">
+                <span class="label">Total Time Played:</span>
+                <span class="value" id="timePlayedStat">0m</span>
+            </div>
+            <div class="stat-row">
+                <span class="label">Obstacles Dodged:</span>
+                <span class="value" id="obstaclesDodgedStat">0</span>
+            </div>
+            <div class="stat-row">
+                <span class="label">Power-Ups Collected:</span>
+                <span class="value" id="powerUpsCollectedStat">0</span>
+            </div>
+            <div class="stat-row">
+                <span class="label">Perfect Dodges:</span>
+                <span class="value" id="perfectDodgesStat">0</span>
+            </div>
+            <div class="stat-row">
+                <span class="label">Current Level:</span>
+                <span class="value" id="currentLevelStat">1</span>
+            </div>
+        </div>
+        <button class="menu-button danger" onclick="resetStats()">RESET STATS</button>
+        <button class="menu-button" onclick="hideStats()">BACK</button>
+    </div>
+
+    <!-- Help Menu -->
+    <div id="helpMenu" class="menu hidden">
+        <h1>HOW TO PLAY</h1>
+        <div class="stats-container" style="text-align: left;">
+            <p style="color: #00D9FF; margin-bottom: 15px;">
+                🎮 <strong>CONTROLS:</strong><br>
+                • Press SPACE or Click to switch gravity<br>
+                • ESC to pause the game<br><br>
+                
+                🎯 <strong>OBJECTIVE:</strong><br>
+                • Dodge red spikes by switching between floor and ceiling<br>
+                • Collect green power-ups for shields and bonuses<br>
+                • Survive as long as possible to increase your score<br><br>
+                
+                ⚡ <strong>POWER-UPS:</strong><br>
+                • 🛡️ Shield: Protects you from one hit<br>
+                • ⏱️ Slow-Mo: Slows down obstacles temporarily<br>
+                • ⭐ Star: Bonus points multiplier<br><br>
+                
+                📈 <strong>PROGRESSION:</strong><br>
+                • Game speeds up every 500 points<br>
+                • Unlock new levels and themes<br>
+                • Earn achievements for special feats
+            </p>
+        </div>
+        <button class="menu-button" onclick="hideHelp()">GOT IT!</button>
+    </div>
+
+    <!-- Pause Menu -->
+    <div id="pauseMenu" class="menu hidden">
+        <h1>PAUSED</h1>
+        <p class="subtitle">Take a breath...</p>
+        <button class="menu-button" onclick="resumeGame()">RESUME</button>
+        <button class="menu-button secondary" onclick="restartFromPause()">RESTART</button>
+        <button class="menu-button danger" onclick="quitToMenu()">QUIT TO MENU</button>
+    </div>
+
+    <!-- Achievement Popup -->
+    <div id="achievementPopup" class="achievement-popup">
+        <h3>🏆 Achievement Unlocked!</h3>
+        <p id="achievementText">You did something amazing!</p>
+    </div>
+
     <script src="game.js"></script>
 </body>
 </html>
