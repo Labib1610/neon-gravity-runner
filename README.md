@@ -94,7 +94,7 @@ Survive as long as possible by switching between floor and ceiling to dodge red 
 2. Upload all files (`index.html`, `style.css`, `game.js`)
 3. Go to Settings → Pages
 4. Select `main` branch as source
-5. Your game will be live at `https://yourusername.github.io/repo-name`
+5. Your game will be live at `https://labib1610.github.io/repo-name`
 
 ### Local Development
 ```bash
